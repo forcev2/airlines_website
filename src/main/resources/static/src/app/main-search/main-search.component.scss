@@ -1,0 +1,161 @@
+.search_bar{
+    
+}
+
+mat-form-field{
+    font-size: small;
+}
+
+.search{
+    width:200px;
+    margin-left:20px;
+    margin-bottom: 0px;
+    height: 0px;
+    top: 5px;
+}
+
+.arrow{
+    margin-left:20px;
+    font-size: 40px;
+    vertical-align:middle;
+    top:20px;
+}
+
+.search_avaible{
+    margin-left: 20px;
+    height: 47px;
+}
+
+mat-checkbox{
+    top: 3px;
+    margin-right: 20px;
+    font-size: small;
+}
+
+.price_range{
+    font-size: small;
+    width:60%;
+    margin-bottom: 10px;
+}
+
+mat-slider{
+    width:100%;
+}
+
+.class_options{
+    font-size: small;
+    width: 140px;
+}
+
+.checkboxlist{
+    margin-top: 0px;
+}
+
+.title{
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.num_ofpeople{
+    width: 80px;
+    margin-left: 30px;
+}
+
+.class_label{
+    font-size: small;
+}
+
+.time{
+    width: 100px;
+}
+.left{
+    margin-left: 30px;
+}
+
+.search_options{
+    margin-left: 20px;
+}
+
+.flights{
+    margin-top:20px;
+}
+
+.individual_flight{
+    margin-top: 5px;
+    height: 80px;
+    //background-color: blue;
+}
+
+.choosen_price{
+    font-size: medium;
+}
+
+.date_time{
+    display: inline-block;
+    width: 100px;
+    height: 65px;
+    color: rgb(97, 97, 97);
+    //background-color: red;
+    text-align: center;
+    margin-top:10px;
+}
+
+.departure_arrival{
+    display: flex;
+    flex-flow: row wrap;
+    //background-color: red;
+}
+
+.time_fl{
+    font-size: 30px;
+}
+
+.date_fl{
+    font-size: small;
+}
+
+
+.between_ic{
+    width:30px;
+    padding-top:5px;
+}
+
+.line{
+    font-size: 25px;
+}
+
+.arrow_stk {
+    width:350px;
+    padding-top:20px;
+    margin-left:50px;
+}
+
+.line_stk {
+    width: 100%;
+    margin-left: -10px;
+    margin-right: -10px;
+    margin-top: 11px;
+    background: #f4f3f0;
+    height: 2px;
+    z-index: 0;
+}
+.point_stk {	
+    color:lightgray;
+    float:right;
+}
+
+.travel_time{
+    
+}
+
+
+.buy_ticket{
+    margin-top:7px;
+    height:40px;
+    width:120px;
+    left: 30px;
+}
+
+.price_for{
+    width: 150px;
+}

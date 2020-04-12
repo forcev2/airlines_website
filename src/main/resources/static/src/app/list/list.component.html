@@ -1,0 +1,61 @@
+<mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" class="tourist_title">
+  <h3>Tourists</h3>
+</mat-card-title>
+<button mat-raised-button color="primary" class="addButton" (click) = "dialogNewUser()" >
+  Add new tourist <i class="material-icons" style="margin-bottom:2px"> add_box</i>
+</button><br>
+<div class="mat-elevation-z8" >
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="tourist_id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.tourist_id}} </td>
+      </ng-container>
+      <!-- First Name Column -->
+      <ng-container matColumnDef="first_name">
+        <th mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="last_name">
+        <th mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+      </ng-container> 
+      <!-- Gender Column -->
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef> Gender </th>
+        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+      </ng-container>
+      <ng-container matColumnDef="country">
+        <th mat-header-cell *matHeaderCellDef> Country </th>
+        <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+      </ng-container>
+      <ng-container matColumnDef="date_of_birth">
+        <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+        <td mat-cell *matCellDef="let element"> {{element.date_of_birth|date:'yyyy-MM-dd HH:mm'}} </td>
+      </ng-container>        
+      <ng-container matColumnDef="notes">
+        <th mat-header-cell *matHeaderCellDef> Notes </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon (click)="openDialogNotes(element)" class="custom_buttons">notes</mat-icon>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef> Edit </th>
+            <td mat-cell *matCellDef="let element">
+              <a [routerLink]="['/user_flights', element.tourist_id]">
+                <mat-icon (click)="openDialog(element)" class="custom_buttons">edit</mat-icon>
+              </a>
+            </td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-icon (click)="openDialogDelete(element)" class="custom_buttons">delete</mat-icon>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[8, 16, 24]" showFirstLastButtons></mat-paginator>
+  </div>

@@ -1,0 +1,117 @@
+<h3 class="title">Search</h3>
+
+<div class="search_bar">
+    <mat-form-field appearance="outline" class="search">
+        <mat-label>From</mat-label>
+        <input matInput [matDatepicker]="picker1" [formControl]="serializedDate1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <i class="material-icons arrow">
+        compare_arrows
+    </i>
+    <mat-form-field appearance="outline" class="search">
+        <mat-label>To</mat-label>
+        <input matInput [matDatepicker]="picker2" [formControl]="serializedDate2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="search num_ofpeople">
+        <mat-label>People</mat-label>
+        <input matInput type="number" placeholder="Number of people" value="2" [(ngModel)]="num_of_people">
+        <mat-icon matPrefix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="search time left">
+        <mat-label>Between</mat-label>
+        <input matInput placeholder="Number of people" value="00:00" [(ngModel)]="hour_greater">
+        <mat-icon matSuffix>access_time</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="search time">
+        <mat-label></mat-label>
+        <input matInput placeholder="Number of people" value="23:59" [(ngModel)]="hour_less">
+        <mat-icon matSuffix>access_time</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="search_avaible" (click)="search()">
+        Search
+        <i class="material-icons">
+            search
+        </i>
+    </button><br>
+    <div class="search_options">
+        <mat-checkbox [(ngModel)]="show_unavaible">Show unavaible flights</mat-checkbox>
+        <mat-checkbox [(ngModel)]="filter_by_price">Filter by Price</mat-checkbox>
+        <a class="class_label">Class: </a>
+        <mat-form-field class="class_options">
+            <mat-select>
+                <mat-option *ngFor="let class_type of class_types" [value]="class_type.value">
+                    {{class_type.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <mat-card *ngIf="filter_by_price == true" class="price_range">
+        Ticket price <i class="price_range_show"><a class="choosen_price">0 - {{ticket_max_price}}$</a></i><br>
+        <mat-slider thumbLabel [displayWith]="formatLabel" tickInterval="10" min="1" max="1000" value="1000"
+            [(ngModel)]="ticket_max_price"></mat-slider>
+    </mat-card>
+    <mat-divider></mat-divider>
+    <div class="flights">
+        <div *ngFor="let flight of flights_dif">
+            <div *ngIf="show_after_search || (flight.flight.occupied_seats < flight.flight.number_of_seats)">
+                <div class="individual_flight">
+                    <div class="departure_arrival">
+                        <div class="date_time">
+                            <a class="time_fl">{{flight.flight.departure_date_and_time|date:'HH:mm'}}</a><br>
+                            <a class="date_fl">{{flight.flight.departure_date_and_time|date:'mediumDate'}}</a>
+                        </div>
+                        <div class="date_time between_ic">
+                            <i class="material-icons line">remove</i>
+                        </div>
+                        <div class="date_time">
+                            <a class="time_fl">{{flight.flight.arrival_date_and_time|date:'HH:mm'}}</a><br>
+                            <a class="date_fl">{{flight.flight.arrival_date_and_time|date:'mediumDate'}}</a>
+                        </div>
+                        <div class="arrow_stk">
+                            <div class="line_stk"></div>
+                            <div class="point_stk">
+
+                            </div>
+                        </div>
+                        <div class="date_time travel_time">
+                            <a class="time_fl">{{flight.date_diffrence}}</a><br>
+                            <a class="date_fl">days</a><br>
+                        </div>
+                        <div class="date_time seats_av">
+                            <a class="time_fl">{{flight.flight.occupied_seats}}/{{flight.flight.number_of_seats}}</a><br>
+                            <a class="date_fl">Seats</a><br>
+                        </div>
+                        <div class="date_time price_for">
+                            <a class="time_fl ticker_pr">{{flight.flight.ticket_price}}$</a><br>
+                            <a class="date_fl">Price for {{num_people_after_search}} people</a><br>
+                        </div>
+                        <div class="date_time buy_ticket">
+                            <div *ngIf="flight.flight.occupied_seats < flight.flight.number_of_seats; else elseBlock;">
+                                <button mat-raised-button color="primary" class="buy_ticket" (click)="search()">
+                                    buy ticket
+                                    <i class="material-icons">
+                                        shopping_cart
+                                    </i>
+                                </button>
+                            </div>
+                            <ng-template #elseBlock>
+                                <button mat-raised-button disabled class="buy_ticket">
+                                    buy ticket
+                                    <i class="material-icons">
+                                        shopping_cart
+                                    </i>
+                                </button>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+        </div>
+
+    </div>

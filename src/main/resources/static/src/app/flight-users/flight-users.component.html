@@ -1,0 +1,53 @@
+<mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" class="tourist_title">
+    Edit Passengers of flight <b>{{flight.flight_id}}</b> <a class="avSeats "> <a class="avSeatsText">Seats</a>
+        <b>{{flight.occupied_seats}}/{{flight.number_of_seats}}</b></a>
+</mat-card-title>
+<div class="bookedFlights">
+    <h4>Passengers</h4>
+    <div *ngFor="let passenger of passengers">
+        <mat-card class="flight_el">
+            <a class="user_flights_card">ID : {{passenger.tourist_id}}</a>
+            <a class="user_flights_card">{{passenger.name}}</a>
+            <a class="user_flights_card">{{passenger.surname}}</a>
+            <button mat-button color="warn" class="delete_booked_flight" (click)="deletePassenger(passenger)">
+                <i class="material-icons">
+                    close
+                </i>
+            </button>
+        </mat-card>
+    </div>
+</div>
+<div class="flights">
+    <h4 class="sAflights">Search Avaible Tourists</h4>
+    <button mat-raised-button class="search_avaible" (click)="searchTourists()">
+        <i class="material-icons">
+            search
+        </i>
+    </button>
+    <mat-form-field class="search_avaible searchfield">
+        <mat-label>Search</mat-label>
+        <input matInput [(ngModel)]="searchQuery">
+    </mat-form-field>
+    <div *ngFor="let tourist of searched_tourists">
+        <mat-card class="flight_el">
+            <a *ngIf="flight.occupied_seats < flight.number_of_seats; else elseBlock">
+                <button mat-button color="primary" class="addFlight" (click)="addFlightToTourist(tourist.tourist_id)">
+                    <i class="material-icons">
+                        add
+                    </i>
+                </button>
+            </a>
+            <ng-template #elseBlock>
+                <button mat-button color="warn" class="addFlight">
+                    <i class="material-icons">
+                        block
+                    </i>
+                </button>
+            </ng-template>
+            <a class="user_flights_card">ID : {{tourist.tourist_id}}</a>
+            <a class="user_flights_card">{{tourist.name}}</a>
+            <a class="user_flights_card">{{tourist.surname}}</a>
+            <mat-icon (click)="openDialogNotes(tourist)" class="button_notes">notes</mat-icon>
+        </mat-card>
+    </div>
+</div>

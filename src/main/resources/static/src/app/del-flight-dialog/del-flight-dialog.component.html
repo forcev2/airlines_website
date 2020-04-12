@@ -1,0 +1,7 @@
+<div mat-dialog-content class="userEdit">
+    Delete Flight <a class="del_user"><b>Id: </b>{{datar.flight_id}}</a> 
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="Cancel()">Cancel</button>
+    <button mat-raised-button [mat-dialog-close]="butChange" color="warn" (click)="confirmClick()">Confirm</button>
+</div>

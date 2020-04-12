@@ -1,0 +1,7 @@
+<div mat-dialog-content class="userEdit">
+    Delete tourist<br><br> <a class="del_user"><b>Id: </b>{{datar.tourist_id}}</a> <a><b>Name: </b>{{datar.name}} {{datar.surname}}</a>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button (click)="Cancel()">Cancel</button>
+    <button mat-raised-button [mat-dialog-close]="butChange" color="warn" (click)="confirmClick()">Confirm</button>
+</div>

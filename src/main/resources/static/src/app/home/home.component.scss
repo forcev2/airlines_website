@@ -1,0 +1,116 @@
+
+$secondary: rgb(157, 175, 255);
+$gray: rgb(250, 250, 250);
+$background: rgb(255, 255, 255);
+$primary: rgb(111,0,255);
+span{
+    font-weight: bold;
+    background: lightgray;
+    padding: .3em .9em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.play-container{
+    padding: 3em;
+    border: 1px solid lightgray;
+    margin-bottom: 1em;
+
+    input{
+        padding: 1em;
+        margin-bottom: 2em;
+    }
+}
+
+.active{
+    background-color: yellow;
+    border: 4px solid black;
+}
+
+.noactive{
+    background-color: lightgray;
+}
+
+.userList{
+    border: 1px solid none;
+    border-spacing: 0;
+    width: 80%;
+}
+
+.userList tr:nth-child(-n+1){
+    border-bottom: none;
+    background-color: $secondary; 
+}
+
+
+.userList td, 
+.userList th { 
+    padding: 10px; 
+    text-align: left;
+}
+
+.userList tr:nth-child(n+2) > td{
+    border-bottom: 1px solid lightgrey;
+}
+
+.userList tr:last-child > td {
+    border-bottom: none;
+}
+
+
+.userList tr:nth-child(n+2):hover{
+    background-color: darken($gray, 10%)
+}
+
+.userList tr:nth-child(n+2):hover > td:nth-child(n+4){
+    background-color: darken($gray, 10%);
+    color:black;
+}
+
+.userList td:nth-child(n+4){
+    background-color:$background;
+    color: lighten(black, 80%);
+    text-align: center;
+}
+
+.addUser{
+    position:relative;
+    width: 130px;
+    height: 30px;
+    background-color:$secondary;
+    margin-bottom:10px;
+    -webkit-box-shadow: 3px 6px 4px 0px rgba(0,0,0,0.30);
+    -moz-box-shadow: 3px 6px 4px 0px rgba(0,0,0,0.30);
+    box-shadow: 3px 6px 4px 0px rgba(0,0,0,0.30);
+}
+
+.addUserText {
+    float: left;
+    height:100%;
+    width: 100px;
+    position:relative;
+    top:3px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.addUser:hover{
+    background-color:lighten($secondary,10%);
+    cursor:pointer;
+}
+
+.addUser:hover > .addUserPlus{
+    background-color:lighten($primary,10%);
+}
+
+.addUserPlus {
+    float:right;
+    height:100%;
+    width: 30px;
+    color: white;
+    text-align: center;
+    background-color: $primary;
+    border:1px bold black;
+}
+

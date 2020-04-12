@@ -1,0 +1,84 @@
+<mat-card class="createPost">
+    <mat-card-header>
+        <mat-card-title>Create new post</mat-card-title>
+    </mat-card-header>
+    <mat-form-field class="createPostUser">
+        <mat-select placeholder="Select user" [(ngModel)]="selected">
+            <mat-option (click)="pr(user)" *ngFor="let user of users.result; let i = index" [value]="user.id">
+                {{user.email}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="createPostName">
+        <input matInput placeholder="Title" [(ngModel)]="newPost.title">
+    </mat-form-field>
+    <mat-card-content>
+        <mat-form-field class="createPostBody">
+            <textarea rows="5" matInput placeholder="Post body" [(ngModel)]="newPost.body"></textarea>>
+        </mat-form-field>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="createPost()">Post</button>
+        <button mat-button (click)="clearPost()">Clear</button>
+    </mat-card-actions>
+</mat-card>
+<div *ngIf="isDataLoaded">
+    <div *ngFor="let post of completePost; let i = index" class="postDiv">
+        <mat-card class="posts" id="post">
+            <mat-card-header class="postHeader">
+                <mat-card-title>
+                    Post #{{post.post.id}} by {{post.user.first_name}} {{post.user.last_name}} ({{post.user.email}})
+                </mat-card-title>
+                <mat-card-subtitle>Title: {{post.post.title}}</mat-card-subtitle>
+                <mat-divider></mat-divider>
+            </mat-card-header>
+            <mat-card-content>
+                {{post.post.body}}
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button (click)="hideme[i] = !hideme[i]">{{hideme[i] ? 'hide form' : 'comment'}}</button>
+
+                <div [hidden]="!hideme[i]">
+                    <mat-card class="newCommentCard">
+                        <div class="newComment">
+                            <mat-form-field class="newCommentName">
+                                <input matInput placeholder="Name">
+                            </mat-form-field><br>
+                            <mat-form-field class=newCommentName>
+                                <input matInput placeholder="Email">
+                            </mat-form-field><br>
+                            <mat-divider [inset]="true"></mat-divider>
+                            <mat-form-field class="newCommentBody">
+                                <textarea matInput placeholder="Comment"></textarea>
+                            </mat-form-field><br>
+                            <button mat-raised-button color="primary" (click)="createPost()" >Post</button>
+                        </div>
+                    </mat-card>
+                </div>
+            </mat-card-actions>
+
+        </mat-card>
+        <mat-expansion-panel class="posts" (click)="showComments(post)"
+            (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-description>
+                    {{post.status}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div *ngFor="let comt of comments">
+                <div *ngFor="let comment of comt.result">
+                    <div class="comments">
+                        <mat-card class="singleComment">
+                            <mat-card-content>
+                                <div class="commentName">Comment by {{comment.name}} ({{comment.email}})</div>
+                                <div class="commentBody">{{comment.body}}</div>
+
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </div>
+</div>

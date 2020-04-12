@@ -1,0 +1,60 @@
+.bookedFlights {
+    width: 50%;
+
+    display: inline-block;
+    vertical-align: top;
+}
+
+.addFlight {
+    display: inline-block;
+}
+
+.flights {
+    width: 50%;
+
+    display: inline-block;
+    vertical-align: top;
+}
+
+.sAflights {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.search_avaible {
+    display: inline-block;
+    top: 15px;
+    float: right;
+}
+
+.flight_el {
+    width: 90%;
+}
+
+.seats_ava {
+    margin-left: 15px;
+}
+
+.user_flights_card {
+    margin-right: 20px;
+}
+
+.seats {
+    float: right;
+}
+
+.delete_booked_flight {
+    float: right;
+    bottom: 7px;
+}
+
+.dep {
+    display: inline-block;
+    vertical-align: top;
+    width: 150px;
+    margin-left: 20px;
+}
+
+.booked_flights_nms{
+    font-size: small;
+}

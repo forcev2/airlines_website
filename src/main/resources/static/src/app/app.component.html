@@ -1,0 +1,36 @@
+<header>
+  <div class="container">
+    <a href="#" class="logo">MARS Airlines</a>
+    <nav>
+      <ul>
+        <li><a href="#" routerLink="/search_main">Search Page
+          <i class="material-icons">
+            place
+          </i>
+        </a></li>
+        <li><a href="#" routerLink="/touristlist">
+          Tourist List
+          <i class="material-icons">
+            perm_identity
+          </i>
+        </a></li>
+        <li><a href="#" routerLink="/flightlist">
+            <a class="top_links">Flight List</a>
+            <i class="material-icons">
+              flight
+            </i>
+        </a></li>
+      </ul>
+    </nav>
+  </div>
+
+</header>
+<div class="container">
+  <div fxLayout="row" fxLayoutAlign="center center" class="content">
+    <mat-card class="card">
+      <router-outlet></router-outlet>
+    </mat-card>
+  </div>
+</div>
+
+<div class="step"></div>

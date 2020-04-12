@@ -1,0 +1,59 @@
+<button mat-raised-button color="primary" class="backButton" [routerLink]="['/list']">
+        <mat-icon (click)="openDialogDelete(element)" class="custom_buttons">arrow_back_ios</mat-icon>
+        go back to the list
+</button>
+<br><br>
+<mat-card class="profileCard">
+        <mat-card-content>
+                <mat-card-title>Account Card</mat-card-title>
+                <mat-form-field class="name">
+                        <input matInput placeholder="First name" [readonly]="true" value="{{user.first_name}}">
+                </mat-form-field>
+                <mat-form-field class=name>
+                        <input matInput placeholder="Last name" [readonly]="true" value="{{user.last_name}}">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="mail">
+                        <input matInput placeholder="Email" [readonly]="true" value="{{user.email}}">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="mail">
+                        <input matInput placeholder="Phone" [readonly]="true" value="{{user.phone}}">
+                </mat-form-field>
+                <mat-form-field class="mail">
+                        <textarea matInput placeholder="Address" [readonly]="true" value="{{user.address}}"></textarea>
+                </mat-form-field>
+        </mat-card-content>
+</mat-card>
+
+<mat-card class="createPost">
+        <mat-card-header>
+                <mat-card-title>Create new post</mat-card-title>
+        </mat-card-header>
+        <mat-form-field class="createPostName">
+                <input matInput placeholder="Title" [(ngModel)]="newPost.title">
+        </mat-form-field>
+        <mat-card-content>
+                <mat-form-field class="createPostBody">
+                        <textarea rows="5" matInput placeholder="Post body" [(ngModel)]="newPost.body"></textarea>
+                </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="createPost()">Post</button>
+                <button mat-button (click)="clearPost()">Clear</button>
+        </mat-card-actions>
+</mat-card>
+
+
+<div *ngFor="let post of posts.result; let i = index">
+        <mat-card class="posts">
+                <mat-card-header>
+                        <mat-card-title>{{i + 1}}</mat-card-title>
+                        <mat-card-subtitle>{{post.title}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                        {{post.body}}
+                </mat-card-content>
+        </mat-card>
+</div>

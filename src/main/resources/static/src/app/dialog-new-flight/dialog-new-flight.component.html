@@ -1,0 +1,24 @@
+<h2 mat-dialog-title >{{dialogTitle}}</h2>
+<div mat-dialog-content class="userEdit">
+    <mat-form-field>
+        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Departure Date" [formControl]="dateControl1">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [ngxMatDatetimePicker]="picker2" placeholder="Arrival date" [formControl]="dateControl2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <ngx-mat-datetime-picker #picker2></ngx-mat-datetime-picker>
+    </mat-form-field>
+
+    <mat-form-field>
+            <input matInput [(ngModel)]="datar.number_of_seats" placeholder="Number of Seats">
+    </mat-form-field><br>
+    <mat-form-field>
+        <input matInput [(ngModel)]="datar.ticket_price" placeholder="Ticket Price">
+    </mat-form-field><br>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="basic" (click)="onNoClick()" >Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="butChange" (click)="onConfifmClick()" cdkFocusInitial>Confirm</button>
+</div>

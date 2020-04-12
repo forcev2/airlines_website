@@ -1,0 +1,65 @@
+<mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column" class="tourist_title">
+    Edit flights - <b>{{user.name}} {{user.surname}} (id: {{user.tourist_id}})</b>
+</mat-card-title>
+<div class="bookedFlights">
+    <h4>Booked Flights</h4>
+    <div *ngFor="let flight of user_flights">
+        <mat-card class="flight_el">
+            <a class="user_flights_card"><a class="booked_flights_nms">ID : </a>{{flight.flight_id}}</a>
+            <a class="user_flights_card"><a class="booked_flights_nms">From:
+                </a>{{flight.departure_date_and_time|date:'yyyy-MM-dd HH:mm'}}</a>
+            <a class="user_flights_card"><a class="booked_flights_nms">To:
+                </a>{{flight.arrival_date_and_time|date:'yyyy-MM-dd HH:mm'}}</a>
+            <button mat-button color="warn" class="delete_booked_flight" (click)="deleteBookedFlight(flight)">
+                <i class="material-icons">
+                    close
+                </i>
+            </button>
+        </mat-card>
+    </div>
+</div>
+<div class="flights">
+    <h4 class="sAflights">Search Avaible Flights</h4>
+    <mat-form-field class="dep">
+        <mat-label>Choose first date</mat-label>
+        <input matInput [matDatepicker]="picker1" [formControl]="serializedDate1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="dep">
+        <mat-label>Choose second date</mat-label>
+        <input matInput [matDatepicker]="picker2" [formControl]="serializedDate2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <button mat-raised-button class="search_avaible" (click)="getFlightsByDate()">
+        <i class="material-icons">
+            search
+        </i>
+    </button>
+    <div *ngFor="let flight of avaible_flights">
+        <mat-card class="flight_el">
+            <a *ngIf="flight.occupied_seats < flight.number_of_seats; else elseBlock">
+                <button mat-button color="primary" class="addFlight" (click)="addFlightToTourist(flight.flight_id)">
+                    <i class="material-icons">
+                        add
+                    </i>
+                </button>
+            </a>
+            <ng-template #elseBlock>
+                <button mat-button color="warn" class="addFlight">
+                    <i class="material-icons">
+                        block
+                    </i>
+                </button>
+            </ng-template>
+            <a class="user_flights_card"><a class="booked_flights_nms">ID : </a>{{flight.flight_id}}</a>
+            <a class="user_flights_card"><a class="booked_flights_nms">From:
+                </a>{{flight.departure_date_and_time|date:'yyyy-MM-dd HH:mm'}}</a>
+            <a class="user_flights_card"><a class="booked_flights_nms">To:
+                </a>{{flight.arrival_date_and_time|date:'yyyy-MM-dd HH:mm'}}</a><br>
+            <a class="user_flights_card seats_ava"> {{flight.occupied_seats}}/{{flight.number_of_seats}}</a>
+            <a class="user_flights_card ">Ticket price: {{flight.ticket_price}}</a>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+table{
+    width:100%;
+}
+
+.addButton{
+    margin-bottom: 10px;
+    display:inline;
+    float: right;
+    bottom:30px;
+}
+
+
+.mat-elevation-z8{
+
+}
+
+.table_tourist{
+    padding:0px;
+}
+
+
+.custom_buttons:hover{
+    cursor: pointer;
+}
+
+@mixin scut-link-unstyled {
+    &, &:visited, &:hover, &:active {
+      font-style: inherit;
+      color: inherit;
+      background-color: transparent;
+      font-size: inherit;
+      text-decoration: none;
+      font-variant: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+      font-family: inherit;
+}
+}
+   
+%scut-link-unstyled {
+    @include scut-link-unstyled;
+}
+  
+a{
+    @extend %scut-link-unstyled;
+}

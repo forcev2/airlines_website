@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>{{dialogTitle}}</h2>
+<div mat-dialog-content class="userEdit">
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.userData.name" placeholder="First Name">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.userData.surname" placeholder="Last Name">
+    </mat-form-field><br>
+    <mat-radio-group [(ngModel)]="data.userData.gender" aria-label="Select an option">
+        Gender<br>
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
+        <mat-radio-button value="Other">Other</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.userData.country" placeholder="Country">
+    </mat-form-field><br>
+    <mat-form-field class="dep">
+        <mat-label>Date Of Birth</mat-label>
+        <input matInput [matDatepicker]="picker1" [formControl]="serializedDate1">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field><br>
+    <mat-form-field style="width: 100%">
+        <textarea rows="4" matInput [(ngModel)]="data.userData.notes" placeholder="Notes"></textarea>>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="basic" (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="butChange" (click)="onConfifmClick()"
+        cdkFocusInitial>Confirm</button>
+</div>
